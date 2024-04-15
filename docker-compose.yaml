@@ -9,12 +9,16 @@ services:
       - "443:443"
     depends_on:
       - database
+    profiles:
+      - store_front
   
   sheduler:
     build:
       context: sheduler/.
     ports:
       - "81:80"
+    profiles:
+      - sheduler
 
   database: 
     image: "mysql"
@@ -23,6 +27,9 @@ services:
     volumes:
       - ./mysql:/docker-entrypoint-initdb.d:ro
       - kinetco:/var/lib/mysql
-
+    profiles:
+      - store_front
+      - sheduler
+      
 volumes:
   kinetco:
