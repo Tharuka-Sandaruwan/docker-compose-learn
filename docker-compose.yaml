@@ -4,11 +4,6 @@ services:
   storefront: 
     build:
       context: .
-      args:
-        - region=us-west-2
-        - alice=0
-      environment:
-        - runtime_env=dev
   database: 
     image: "mysql"
     env_file: 
